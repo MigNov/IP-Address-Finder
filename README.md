@@ -38,7 +38,7 @@ options:
 Example:
 
 ```
-./ping.py --interface enp9s0 --ip-range 192.168.0.0/16
+./ip-finder.py --interface enp9s0 --ip-range 192.168.0.0/16
 ```
 
 The example uses enp9s0 interface and it tries the discovery of relevant and accessible subnet in the 192.168.0.0/16 range.
