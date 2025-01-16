@@ -410,7 +410,7 @@ if __name__ == "__main__":
                 if not DEBUG:
                      progress_bar( 100.0 )
                      print()
-                print(f'Found gateway IP address {addr} with netmask {boundary[2]} in {time_delta} second(s)')
+                print(f'Found gateway IP address {addr_found} with netmask {boundary[2]} in {time_delta} second(s)')
                 sys.exit(0)
             debug_print(f'{single_range}: {boundary}, random address = {random_addr}')
         debug_print(f'{single_range}: {len(l)} * /24 addresses')
