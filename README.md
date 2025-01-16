@@ -8,7 +8,7 @@ The approach is to assign a random IP address within the specified range for you
 
 Please note that is causes a lot of network pollution using ICMP ECHO (ping) requests. 
 
-# Disclaimer
+## Disclaimer
 
 This utility has been designed to find IP address of your own network devices you forget IP configuration of. It has not been designed to promote any illegal activity.
 
