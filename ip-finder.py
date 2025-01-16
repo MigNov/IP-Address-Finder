@@ -374,6 +374,7 @@ if __name__ == "__main__":
                 progress_bar( percent )
             debug_print(f'Processing {index}/{max_addrs} ({percent}% in {time_delta} second(s))')
             boundary = get_boundary_addresses(subnet, boundary_width)
+            addr_found = None
             if boundary:
                 random_addr = get_random_address_in_range(subnet)
                 if not set_interface_ip(args.interface, random_addr, boundary[2]):
@@ -387,19 +388,17 @@ if __name__ == "__main__":
                     found = False
                     for address in boundary[0]:
                         if ping(address, args.interface, timeout, req_confirmations, sleep_time):
-                            found = True
-
-                    for address in boundary[1]:
-                        if ping(address, args.interface, timeout, req_confirmations, sleep_time):
+                            addr_found = address
                             found = True
 
                     if not found:
-                        continue
+                        for address in boundary[1]:
+                            if ping(address, args.interface, timeout, req_confirmations, sleep_time):
+                                addr_found = address
+                                found = True
 
-                    if ping(boundary[0]):
-                        addr = boundary[0]
-                    else:
-                        addr = boundary[1]
+                    if not found:
+                        continue
                 except KeyboardInterrupt:
                     print()
                     print('Interrupted by user')
@@ -407,7 +406,7 @@ if __name__ == "__main__":
 
                 time_current = time_in_seconds()
                 time_delta = time_current - time_start
-                debug_print(f'Ping on interface {args.interface} passed. Target IP: {addr}, IP Address: {random_addr}, netmask: {boundary[2]}')
+                debug_print(f'Ping on interface {args.interface} passed. Target IP: {addr_found}, IP Address: {random_addr}, netmask: {boundary[2]}')
                 if not DEBUG:
                      progress_bar( 100.0 )
                      print()
