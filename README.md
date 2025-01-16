@@ -6,7 +6,7 @@ The IP Address Finder Utility is the utility designed to find the IP adress rang
 
 The approach is to assign a random IP address within the specified range for your specified interface and try to ping the boundary addresses where the gateway is being usually located. It's still work in progress however it might be useful if you forget your IP address configuration or you have some piece of equipment that you don't forgot all the configuration.
 
-Please note that is causes a lot of network pollution using ICMP ECHO (ping) requests. 
+Please note that running this utility causes a lot of network pollution using ICMP ECHO (ping) requests. 
 
 ## Disclaimer
 
